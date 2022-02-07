@@ -7,6 +7,7 @@ const humidityBox = document.querySelector('.humidityBox');
 const pressureBox = document.querySelector('.pressureBox');
 const winndSpeedBox = document.querySelector('.winndSpeedBox');
 const windDirBox = document.querySelector('.windDirBox');
+const windDirSymbol = document.querySelector('.windDirSymbol');
 
 let cityName;
 
@@ -56,7 +57,6 @@ async function populateData () {
 cityForm.addEventListener('submit', (e) => {
     e.preventDefault();
     cityName = cityInput.value;
-    populateData ();
     renderData ()
 })
 
@@ -72,7 +72,7 @@ async function renderData () {
     cityBox.innerText = city;
 
     let tempt = data.temperature;
-    tempBox.innerHTML = `Temperature: ${tempt} C`;
+    tempBox.innerHTML = `Temperature: ${tempt} &degC`;
 
     let hum = data.humidity;
     humidityBox.innerHTML = `Humidity: ${hum} %`;
@@ -85,7 +85,34 @@ async function renderData () {
 
     let windDir = data.windDir;
     windDirBox.innerHTML = `<img src='img/arrow.png'>`;
-    windDirBox.style = `transform: rotate(${windDir}deg)`
+    windDirBox.style = `transform: rotate(${windDir}deg)`;
+    
+    // Function to show wind direction in symbol "direction of the world"
+    let windLetter =  (x) => {
+
+        if (x >= 0 && x < 22.5) {
+            windDirSymbol.innerText = 'N'
+        } else if (x > 22.5 && x < 67.5) {
+            windDirSymbol.innerText = 'NE'
+        } else if (x > 67.5 && x < 112.5) {
+            windDirSymbol.innerText = 'E'
+        } else if (x > 112.5 && x < 157.5) {
+            windDirSymbol.innerText = 'SE'
+        } else if (x > 157.5 && x < 202.5) {
+            windDirSymbol.innerText = 'S'
+        } else if (x > 202.5 && x < 247.5) {
+            windDirSymbol.innerText = 'Sw'
+        } else if (x > 247.5 && x < 292.5) {
+            windDirSymbol.innerHTML = 'W'
+        } else if (x > 292.5 && x < 337.5) {
+            windDirSymbol.innerText = 'NW'
+        } else if (x > 337.5 && x < 361) {
+            windDirSymbol.innerText = 'N'
+        } 
+    }; 
+
+    
+    windLetter(data.windDir);
 }
 
 
