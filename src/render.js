@@ -4,17 +4,29 @@ import icon from './img/arrow.png';
 const arrow = new Image();
 arrow.src = icon;
 
-
+const label = document.querySelector('label')
 const results = document.querySelector('.results');
 
 let cityBox = document.createElement('div');
+cityBox.className = 'cityBox';
+
 let tempBox = document.createElement('div');
+tempBox.className = 'tempBox';
+
 let humidityBox = document.createElement('div');
+humidityBox.className = 'humidityBox';
+
 let pressureBox = document.createElement('div');
+pressureBox.classList = 'pressureBox';
+
 let winndSpeedBox = document.createElement('div');
+winndSpeedBox.classList = 'winndSpeedBox';
+
 let windDirBox = document.createElement('div');
 windDirBox.className = 'windDirBox';
+
 let windDirSymbol = document.createElement('div');
+windDirSymbol.classList = 'windDirSymbol';
 
 
 
@@ -38,8 +50,9 @@ let render = async () => {
     winndSpeedBox.innerHTML = `Wind speed: ${windSpeed} m/s`;
 
     let windDir = data.windDir;
+ //   windDirBox.innerText = 'Wind direction: '
     windDirBox.appendChild(arrow);
-    windDirBox.style = `transform: rotate(${windDir}deg)`;
+    windDirBox.firstChild.style = `transform: rotate(${windDir}deg)`;
 
     let windLetter =  (x) => {
 
@@ -71,6 +84,8 @@ let render = async () => {
 
 
     results.append(cityBox, tempBox, humidityBox, pressureBox, winndSpeedBox, windDirBox, windDirSymbol);
+
+    label.classList.add('hidden')
 }
 
 export {render}
