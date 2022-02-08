@@ -54,7 +54,7 @@ let render = async () => {
         } else if (x > 157.5 && x < 202.5) {
             windDirSymbol.innerText = 'S'
         } else if (x > 202.5 && x < 247.5) {
-            windDirSymbol.innerText = 'Sw'
+            windDirSymbol.innerText = 'SW'
         } else if (x > 247.5 && x < 292.5) {
             windDirSymbol.innerHTML = 'W'
         } else if (x > 292.5 && x < 337.5) {
