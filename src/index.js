@@ -1,12 +1,17 @@
 import _ from 'lodash';
 
-function component() {
-    const element = document.createElement('div');
-  
-    // Lodash, now imported by this script
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  
-    return element;
-  }
-  
-  document.body.appendChild(component());
+import css from './style.css';
+import {render} from './render';
+
+const cityInput = document.querySelector('.cityInput');
+const cityForm = document.querySelector('.cityForm');
+let cityName = '';
+
+// Handling input
+cityForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  cityName = cityInput.value;
+  render ()
+})
+
+export {cityName};
