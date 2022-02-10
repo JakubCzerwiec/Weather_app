@@ -19,8 +19,8 @@ humidityBox.className = 'humidityBox';
 let pressureBox = document.createElement('div');
 pressureBox.classList = 'pressureBox';
 
-let winndSpeedBox = document.createElement('div');
-winndSpeedBox.classList = 'winndSpeedBox';
+let windSpeedBox = document.createElement('div');
+windSpeedBox.classList = 'winndSpeedBox';
 
 let windDirBox = document.createElement('div');
 windDirBox.className = 'windDirBox';
@@ -35,10 +35,10 @@ let render = async () => {
     const data = await populateData();
 
     let city = data.location;
-    cityBox.innerHTML = `City: ${city}`;
+    cityBox.innerHTML = `${city}`;
 
     let tempt = data.temperature;
-    tempBox.innerHTML = `Temperature: ${tempt} &degC`;
+    tempBox.innerHTML = `${tempt} &degC`;
 
     let hum = data.humidity;
     humidityBox.innerHTML = `Humidity: ${hum} %`;
@@ -46,44 +46,49 @@ let render = async () => {
     let pressure = data.pressure;
     pressureBox.innerHTML = `Pressure: ${pressure} hPa`;
 
-    let windSpeed = data.windSpeed;
-    winndSpeedBox.innerHTML = `Wind speed: ${windSpeed} m/s`;
-
-    let windDir = data.windDir;
- //   windDirBox.innerText = 'Wind direction: '
-    windDirBox.appendChild(arrow);
-    windDirBox.firstChild.style = `transform: rotate(${windDir}deg)`;
-
-    let windLetter =  (x) => {
-
-        if (x >= 0 && x < 22.5) {
-            windDirSymbol.innerText = 'N'
-        } else if (x > 22.5 && x < 67.5) {
-            windDirSymbol.innerText = 'NE'
-        } else if (x > 67.5 && x < 112.5) {
-            windDirSymbol.innerText = 'E'
-        } else if (x > 112.5 && x < 157.5) {
-            windDirSymbol.innerText = 'SE'
-        } else if (x > 157.5 && x < 202.5) {
-            windDirSymbol.innerText = 'S'
-        } else if (x > 202.5 && x < 247.5) {
-            windDirSymbol.innerText = 'SW'
-        } else if (x > 247.5 && x < 292.5) {
-            windDirSymbol.innerHTML = 'W'
-        } else if (x > 292.5 && x < 337.5) {
-            windDirSymbol.innerText = 'NW'
-        } else if (x > 337.5 && x < 361) {
-            windDirSymbol.innerText = 'N'
-        } 
-    }; 
-
+    let windBox = document.createElement('div');
+    windBox.className = 'windBox';
+    windBox.innerText = 'Wind:'
     
-    windLetter(data.windDir);
+            let windSpeed = data.windSpeed;
+            windSpeedBox.innerHTML = `${windSpeed} m/s`;
+            windSpeed.className = 'windSped';
+
+            let windDir = data.windDir;
+         //   windDirBox.className = 'windDir';
+            windDirBox.appendChild(arrow);
+            windDirBox.firstChild.style = `transform: rotate(${windDir}deg)`;
+
+            let windLetter =  (x) => {
+
+                if (x >= 0 && x < 22.5) {
+                    windDirSymbol.innerText = 'N'
+                } else if (x > 22.5 && x < 67.5) {
+                    windDirSymbol.innerText = 'NE'
+                } else if (x > 67.5 && x < 112.5) {
+                    windDirSymbol.innerText = 'E'
+                } else if (x > 112.5 && x < 157.5) {
+                    windDirSymbol.innerText = 'SE'
+                } else if (x > 157.5 && x < 202.5) {
+                    windDirSymbol.innerText = 'S'
+                } else if (x > 202.5 && x < 247.5) {
+                    windDirSymbol.innerText = 'SW'
+                } else if (x > 247.5 && x < 292.5) {
+                    windDirSymbol.innerHTML = 'W'
+                } else if (x > 292.5 && x < 337.5) {
+                    windDirSymbol.innerText = 'NW'
+                } else if (x > 337.5 && x < 361) {
+                    windDirSymbol.innerText = 'N'
+                } 
+            }; 
+
+            
+            windLetter(data.windDir);
 
 
 
-
-    results.append(cityBox, tempBox, humidityBox, pressureBox, winndSpeedBox, windDirBox, windDirSymbol);
+    windBox.append(windSpeedBox, windDirBox, windDirSymbol)
+    results.append(cityBox, tempBox, humidityBox, pressureBox, windBox);
 
     label.classList.add('hidden')
 }
