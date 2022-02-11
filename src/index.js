@@ -5,13 +5,16 @@ import {render} from './render';
 
 const cityInput = document.querySelector('.cityInput');
 const cityForm = document.querySelector('.cityForm');
+const results = document.querySelector('.results');
 let cityName = '';
 
 // Handling input
 cityForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+  e.preventDefault(e);
   cityName = cityInput.value;
-  render ()
+  results.innerHTML = '';
+  render ();
+  cityInput.value = '';
 })
 
 export {cityName};

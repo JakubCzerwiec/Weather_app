@@ -20,7 +20,7 @@ const getWeather = async () => {
                 pressure: 1015
             },
             wind: {
-                deg: 240,
+                deg: 0,
                 speed: 6.69
             },
             clouds: {

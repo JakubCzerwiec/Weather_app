@@ -19,6 +19,9 @@ humidityBox.className = 'humidityBox';
 let pressureBox = document.createElement('div');
 pressureBox.classList = 'pressureBox';
 
+let cloudsBox = document.createElement('div');
+cloudsBox.classList = 'cloudsBox';
+
 let windSpeedBox = document.createElement('div');
 windSpeedBox.classList = 'winndSpeedBox';
 
@@ -46,16 +49,18 @@ let render = async () => {
     let pressure = data.pressure;
     pressureBox.innerHTML = `Pressure: ${pressure} hPa`;
 
+    let clouds = data.clouds;
+    cloudsBox.innerHTML = `Clouds: ${clouds} %`;
+
     let windBox = document.createElement('div');
     windBox.className = 'windBox';
     windBox.innerText = 'Wind:'
     
             let windSpeed = data.windSpeed;
             windSpeedBox.innerHTML = `${windSpeed} m/s`;
-            windSpeed.className = 'windSped';
+            windSpeedBox.className = 'windSpeedBox';
 
             let windDir = data.windDir;
-         //   windDirBox.className = 'windDir';
             windDirBox.appendChild(arrow);
             windDirBox.firstChild.style = `transform: rotate(${windDir}deg)`;
 
@@ -87,10 +92,11 @@ let render = async () => {
 
 
 
-    windBox.append(windSpeedBox, windDirBox, windDirSymbol)
-    results.append(cityBox, tempBox, humidityBox, pressureBox, windBox);
+    windBox.append(windDirBox, windDirSymbol, windSpeedBox);
 
-    label.classList.add('hidden')
+    results.append(cityBox, tempBox, humidityBox, pressureBox, cloudsBox, windBox);
+
+
 }
 
 export {render}
