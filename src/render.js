@@ -13,6 +13,9 @@ cityBox.className = 'cityBox';
 let tempBox = document.createElement('div');
 tempBox.className = 'tempBox';
 
+let description1Box = document.createElement('div');
+description1Box.className = ('description1Box');
+
 let humidityBox = document.createElement('div');
 humidityBox.className = 'humidityBox';
 
@@ -41,23 +44,26 @@ let render = async () => {
     cityBox.innerHTML = `${city}`;
 
     let tempt = data.temperature;
-    tempBox.innerHTML = `${tempt} &degC`;
+    tempBox.innerHTML = `${tempt}&degC`;
+
+    let description1 = data.weatherDescript2;
+    description1Box.innerHTML = `${description1}`;
 
     let hum = data.humidity;
-    humidityBox.innerHTML = `Humidity: ${hum} %`;
+    humidityBox.innerHTML = `Humidity: ${hum}%`;
 
     let pressure = data.pressure;
-    pressureBox.innerHTML = `Pressure: ${pressure} hPa`;
+    pressureBox.innerHTML = `Pressure: ${pressure}hPa`;
 
     let clouds = data.clouds;
-    cloudsBox.innerHTML = `Clouds: ${clouds} %`;
+    cloudsBox.innerHTML = `Clouds: ${clouds}%`;
 
     let windBox = document.createElement('div');
     windBox.className = 'windBox';
     windBox.innerText = 'Wind:'
     
             let windSpeed = data.windSpeed;
-            windSpeedBox.innerHTML = `${windSpeed} m/s`;
+            windSpeedBox.innerHTML = `${windSpeed}m/s`;
             windSpeedBox.className = 'windSpeedBox';
 
             let windDir = data.windDir;
@@ -94,7 +100,7 @@ let render = async () => {
 
     windBox.append(windDirBox, windDirSymbol, windSpeedBox);
 
-    results.append(cityBox, tempBox, humidityBox, pressureBox, cloudsBox, windBox);
+    results.append(cityBox, tempBox, description1Box, humidityBox, pressureBox, cloudsBox, windBox);
 
 
 }
