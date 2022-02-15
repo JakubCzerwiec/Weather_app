@@ -25,8 +25,29 @@ form {
     justify-content: center;
     align-items: center;
     margin: .5em auto;
-    
 }
+
+.waiting {
+    width: 10em;
+    height: 10em;
+    margin: 5em auto;
+    animation: rotation 2s infinite linear;
+}
+
+.waiting img {
+    position: absolute;
+    width: 10em;
+    height: 10em;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-359deg);
+    }
+  }
 
 
 .hidden {

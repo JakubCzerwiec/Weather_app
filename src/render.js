@@ -4,6 +4,8 @@ import icon from './img/arrow.png';
 const arrow = new Image();
 arrow.src = icon;
 
+const waiting = document.querySelector('.waiting');
+
 const label = document.querySelector('label')
 const results = document.querySelector('.results');
 
@@ -102,6 +104,7 @@ let render = async () => {
 
     results.append(cityBox, tempBox, description1Box, humidityBox, pressureBox, cloudsBox, windBox);
 
+    waiting.classList.toggle('hidden');
 
 }
 
